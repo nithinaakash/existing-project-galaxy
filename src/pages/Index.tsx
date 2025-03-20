@@ -7,10 +7,12 @@ import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0a192f]">
+    <div className="min-h-screen flex flex-col bg-[#0f0320] relative">
+      <ParticleBackground />
       <NavBar />
       <main className="flex-grow">
         <Hero />

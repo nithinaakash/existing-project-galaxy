@@ -2,14 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { Github, Mail, MapPin, Phone, Linkedin, FileText, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Typewriter from "./Typewriter";
 
 const Hero = () => {
   return (
-    <section className="py-32 md:py-40 bg-gradient-to-b from-[#0a192f] to-[#112240]">
+    <section className="py-32 md:py-40 bg-gradient-to-b from-[#0f0320] to-[#1a0842]">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
           <motion.p 
-            className="text-[#64ffda] font-mono mb-5"
+            className="text-[#e844ff] font-mono mb-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -18,7 +19,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-4 text-[#ccd6f6]"
+            className="text-5xl md:text-7xl font-bold mb-4 text-[#f2eaff]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -27,16 +28,20 @@ const Hero = () => {
           </motion.h1>
           
           <motion.h2 
-            className="text-4xl md:text-6xl font-semibold mb-6 text-[#8892b0]"
+            className="text-4xl md:text-6xl font-semibold mb-6 text-[#d5c0ff]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            I build things for the web.
+            I <Typewriter 
+              texts={["build things for the web.", "solve complex problems.", "create digital experiences.", "develop innovative solutions."]} 
+              typingSpeed={80}
+              className="bg-gradient-to-r from-[#e844ff] to-[#8c52ff] bg-clip-text text-transparent"
+            />
           </motion.h2>
           
           <motion.p 
-            className="text-lg text-[#8892b0] mb-8 leading-relaxed max-w-xl"
+            className="text-lg text-[#d5c0ff] mb-8 leading-relaxed max-w-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -52,30 +57,30 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <motion.div 
-              className="flex items-center text-[#8892b0]"
-              whileHover={{ scale: 1.05, color: "#64ffda" }}
+              className="flex items-center text-[#d5c0ff]"
+              whileHover={{ scale: 1.05, color: "#e844ff" }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <MapPin className="h-4 w-4 mr-1" />
               <span>Brooklyn, New York</span>
             </motion.div>
             <motion.div 
-              className="flex items-center text-[#8892b0]"
-              whileHover={{ scale: 1.05, color: "#64ffda" }}
+              className="flex items-center text-[#d5c0ff]"
+              whileHover={{ scale: 1.05, color: "#e844ff" }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <Mail className="h-4 w-4 mr-1" />
-              <a href="mailto:snithinaakash@gmail.com" className="hover:text-[#64ffda] transition-colors">
+              <a href="mailto:snithinaakash@gmail.com" className="hover:text-[#e844ff] transition-colors">
                 snithinaakash@gmail.com
               </a>
             </motion.div>
             <motion.div 
-              className="flex items-center text-[#8892b0]"
-              whileHover={{ scale: 1.05, color: "#64ffda" }}
+              className="flex items-center text-[#d5c0ff]"
+              whileHover={{ scale: 1.05, color: "#e844ff" }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <Phone className="h-4 w-4 mr-1" />
-              <a href="tel:+13476564799" className="hover:text-[#64ffda] transition-colors">
+              <a href="tel:+13476564799" className="hover:text-[#e844ff] transition-colors">
                 +1 347-656-4799
               </a>
             </motion.div>
@@ -93,7 +98,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="group"
             >
-              <Button className="gap-2 bg-transparent border border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10">
+              <Button className="gap-2 bg-transparent border border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 glow">
                 Check out my work 
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -105,7 +110,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button variant="outline" className="gap-2 border-[#8892b0] text-[#8892b0] hover:border-[#64ffda] hover:text-[#64ffda] hover:bg-transparent">
+              <Button variant="outline" className="gap-2 border-[#d5c0ff] text-[#d5c0ff] hover:border-[#e844ff] hover:text-[#e844ff] hover:bg-transparent">
                 <Github className="h-4 w-4" />
                 GitHub
               </Button>
@@ -117,7 +122,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button variant="outline" className="gap-2 border-[#8892b0] text-[#8892b0] hover:border-[#64ffda] hover:text-[#64ffda] hover:bg-transparent">
+              <Button variant="outline" className="gap-2 border-[#d5c0ff] text-[#d5c0ff] hover:border-[#e844ff] hover:text-[#e844ff] hover:bg-transparent">
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </Button>

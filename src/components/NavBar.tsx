@@ -39,7 +39,7 @@ const NavBar = () => {
   return (
     <motion.nav 
       className={`sticky top-0 z-50 backdrop-blur-md py-4 transition-all duration-300 ${
-        isScrolled ? "bg-[#112240]/90 shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-[#1a0842]/90 shadow-lg" : "bg-transparent"
       }`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -50,7 +50,7 @@ const NavBar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-[#64ffda] to-[#5eebcb] text-transparent bg-clip-text hover:from-[#64ffda] hover:to-blue-400 transition-all duration-300">
+          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-[#e844ff] to-[#8c52ff] text-transparent bg-clip-text hover:from-[#e844ff] hover:to-[#5e17eb] transition-all duration-300">
             Nithinaakash S.
           </Link>
         </motion.div>
@@ -67,11 +67,11 @@ const NavBar = () => {
             >
               <Link 
                 to={item === "Home" ? "/" : `#${item.toLowerCase()}`} 
-                className="relative text-gray-300 hover:text-[#64ffda] transition-colors overflow-hidden group"
+                className="relative text-gray-300 hover:text-[#e844ff] transition-colors overflow-hidden group"
               >
-                <span className="text-[#64ffda] mr-1 font-mono">0{index + 1}.</span>
+                <span className="text-[#e844ff] mr-1 font-mono">0{index + 1}.</span>
                 {item}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#e844ff] to-[#8c52ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>
             </motion.div>
           ))}
@@ -82,7 +82,7 @@ const NavBar = () => {
             whileHover={{ scale: 1.2, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10 hover:text-white transition-all">
+            <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 hover:text-white transition-all glow">
               <Github className="h-5 w-5" />
             </Button>
           </motion.a>
@@ -91,7 +91,7 @@ const NavBar = () => {
             whileHover={{ scale: 1.2, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10 hover:text-white transition-all">
+            <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 hover:text-white transition-all glow">
               <Mail className="h-5 w-5" />
             </Button>
           </motion.a>
@@ -100,7 +100,7 @@ const NavBar = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <motion.div whileTap={{ scale: 0.9 }}>
-            <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-[#64ffda]">
+            <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-[#e844ff]">
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </motion.div>
@@ -111,7 +111,7 @@ const NavBar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden py-4 px-4 absolute w-full bg-[#112240]/95 backdrop-blur-md shadow-xl"
+            className="md:hidden py-4 px-4 absolute w-full bg-[#1a0842]/95 backdrop-blur-md shadow-xl"
             initial={{ opacity: 0, height: 0, y: -20 }}
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}
@@ -124,14 +124,14 @@ const NavBar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="border-b border-[#233554] pb-2"
+                  className="border-b border-[#412e6e] pb-2"
                 >
                   <Link 
                     to={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-                    className="hover:text-[#64ffda] text-gray-300 transition-colors flex items-center" 
+                    className="hover:text-[#e844ff] text-gray-300 transition-colors flex items-center" 
                     onClick={toggleMenu}
                   >
-                    <span className="text-[#64ffda] mr-2 font-mono">0{index + 1}.</span>
+                    <span className="text-[#e844ff] mr-2 font-mono">0{index + 1}.</span>
                     {item}
                   </Link>
                 </motion.div>
@@ -143,7 +143,7 @@ const NavBar = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10">
+                  <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 glow">
                     <Github className="h-5 w-5" />
                   </Button>
                 </motion.a>
@@ -151,7 +151,7 @@ const NavBar = () => {
                   href="mailto:snithinaakash@gmail.com"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10">
+                  <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 glow">
                     <Mail className="h-5 w-5" />
                   </Button>
                 </motion.a>
