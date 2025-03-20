@@ -13,63 +13,26 @@ const skillsData = {
   tools: ["Git", "REST APIs", "Postman", "IntelliJ", "Axios", "Hadoop", "Agile Methodologies", "Streamlit"]
 };
 
-// Define colors for each category
-const categoryColors = {
-  languages: {
-    from: "from-blue-500",
-    to: "to-blue-700",
-    badge: "bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200"
-  },
-  frameworks: {
-    from: "from-purple-500",
-    to: "to-purple-700",
-    badge: "bg-purple-100 text-purple-800 hover:bg-purple-200 border-purple-200"
-  },
-  cloud: {
-    from: "from-sky-500",
-    to: "to-sky-700",
-    badge: "bg-sky-100 text-sky-800 hover:bg-sky-200 border-sky-200"
-  },
-  mlai: {
-    from: "from-green-500",
-    to: "to-green-700",
-    badge: "bg-green-100 text-green-800 hover:bg-green-200 border-green-200"
-  },
-  databases: {
-    from: "from-amber-500",
-    to: "to-amber-700",
-    badge: "bg-amber-100 text-amber-800 hover:bg-amber-200 border-amber-200"
-  },
-  tools: {
-    from: "from-pink-500",
-    to: "to-pink-700",
-    badge: "bg-pink-100 text-pink-800 hover:bg-pink-200 border-pink-200"
-  }
-};
-
-const SkillCategory = ({ title, skills, icon, colorKey }) => {
-  const colors = categoryColors[colorKey];
-  
+const SkillCategory = ({ title, skills, icon, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-50px" }}
     >
-      <Card className="h-full border overflow-hidden group">
-        <div className={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-        <CardHeader className="pb-2 relative">
+      <Card className="h-full border border-[#233554] bg-[#112240] hover:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] transition-all duration-300">
+        <CardHeader className="pb-2">
           <CardTitle className="text-xl flex items-center">
             <motion.div
-              className={`text-${colorKey === 'languages' ? 'blue' : colorKey === 'frameworks' ? 'purple' : colorKey === 'cloud' ? 'sky' : colorKey === 'mlai' ? 'green' : colorKey === 'databases' ? 'amber' : 'pink'}-500`}
+              className="text-[#64ffda] mr-2"
               whileHover={{ rotate: 5, scale: 1.1 }}
             >
               {icon}
             </motion.div>
-            <span className="ml-2">{title}</span>
+            <span className="text-[#ccd6f6]">{title}</span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-[#8892b0]">
             {title === "Languages" ? "Programming languages I work with" : 
              title === "Frameworks" ? "Web and application frameworks" :
              title === "Cloud" ? "Cloud and deployment technologies" :
@@ -80,18 +43,17 @@ const SkillCategory = ({ title, skills, icon, colorKey }) => {
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
+            {skills.map((skill, idx) => (
               <motion.div
-                key={index}
+                key={idx}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-                className="inline-block"
+                transition={{ duration: 0.3, delay: idx * 0.03 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
               >
                 <Badge 
                   variant="outline" 
-                  className={colors.badge}
+                  className="bg-[#172a45]/50 text-[#64ffda] border-[#64ffda]/30 hover:bg-[#64ffda]/10 hover:border-[#64ffda] transition-all"
                 >
                   {skill}
                 </Badge>
@@ -106,57 +68,60 @@ const SkillCategory = ({ title, skills, icon, colorKey }) => {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-background via-background to-accent/10">
+    <section id="skills" className="py-32 bg-[#0a192f]">
       <div className="container mx-auto px-4">
         <motion.div
-          className="mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text inline-block">Technical Skills</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="numbered-heading number-03 mb-12">
+            <span className="text-[#ccd6f6]">Skills</span>
+          </h2>
+          <p className="text-[#8892b0] max-w-2xl">
             I've developed a diverse skill set across various technologies, frameworks, and tools throughout my career.
+            Here are some of the technologies I've been working with recently:
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <SkillCategory 
             title="Languages" 
             skills={skillsData.languages} 
             icon={<Code className="h-5 w-5" />} 
-            colorKey="languages"
+            index={0}
           />
           <SkillCategory 
             title="Frameworks" 
             skills={skillsData.frameworks} 
             icon={<Terminal className="h-5 w-5" />} 
-            colorKey="frameworks"
+            index={1}
           />
           <SkillCategory 
             title="Cloud" 
             skills={skillsData.cloud} 
             icon={<Cloud className="h-5 w-5" />} 
-            colorKey="cloud"
+            index={2}
           />
           <SkillCategory 
             title="ML/AI" 
             skills={skillsData.mlai} 
             icon={<Brain className="h-5 w-5" />} 
-            colorKey="mlai"
+            index={3}
           />
           <SkillCategory 
             title="Databases" 
             skills={skillsData.databases} 
             icon={<Database className="h-5 w-5" />} 
-            colorKey="databases"
+            index={4}
           />
           <SkillCategory 
             title="Tools" 
             skills={skillsData.tools} 
             icon={<Server className="h-5 w-5" />}
-            colorKey="tools" 
+            index={5}
           />
         </div>
       </div>

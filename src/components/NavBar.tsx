@@ -1,12 +1,27 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Github, Mail, Phone, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+      setIsScrolled(position > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,9 +38,11 @@ const NavBar = () => {
 
   return (
     <motion.nav 
-      className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm py-4 border-b border-purple-500/20"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      className={`sticky top-0 z-50 backdrop-blur-md py-4 transition-all duration-300 ${
+        isScrolled ? "bg-[#112240]/90 shadow-lg" : "bg-transparent"
+      }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -33,7 +50,7 @@ const NavBar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text">
+          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-[#64ffda] to-[#5eebcb] text-transparent bg-clip-text hover:from-[#64ffda] hover:to-blue-400 transition-all duration-300">
             Nithinaakash S.
           </Link>
         </motion.div>
@@ -50,10 +67,11 @@ const NavBar = () => {
             >
               <Link 
                 to={item === "Home" ? "/" : `#${item.toLowerCase()}`} 
-                className="relative hover:text-purple-500 transition-colors overflow-hidden group"
+                className="relative text-gray-300 hover:text-[#64ffda] transition-colors overflow-hidden group"
               >
+                <span className="text-[#64ffda] mr-1 font-mono">0{index + 1}.</span>
                 {item}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>
             </motion.div>
           ))}
@@ -64,7 +82,7 @@ const NavBar = () => {
             whileHover={{ scale: 1.2, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button variant="outline" size="icon" className="rounded-full border-gray-400 bg-gradient-to-br from-gray-50 to-gray-100 hover:from-purple-50 hover:to-blue-50">
+            <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10 hover:text-white transition-all">
               <Github className="h-5 w-5" />
             </Button>
           </motion.a>
@@ -73,7 +91,7 @@ const NavBar = () => {
             whileHover={{ scale: 1.2, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button variant="outline" size="icon" className="rounded-full border-gray-400 bg-gradient-to-br from-gray-50 to-gray-100 hover:from-purple-50 hover:to-blue-50">
+            <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10 hover:text-white transition-all">
               <Mail className="h-5 w-5" />
             </Button>
           </motion.a>
@@ -82,62 +100,66 @@ const NavBar = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <motion.div whileTap={{ scale: 0.9 }}>
-            <Button variant="ghost" size="icon" onClick={toggleMenu}>
-              {isMenuOpen ? <X className="h-6 w-6 text-purple-500" /> : <Menu className="h-6 w-6" />}
+            <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-[#64ffda]">
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </motion.div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <motion.div 
-          className="md:hidden py-4 px-4 bg-background border-b absolute w-full"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex flex-col space-y-4">
-            {["Home", "Experience", "Projects", "Skills", "Contact"].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link 
-                  to={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-                  className="hover:text-purple-500 transition-colors" 
-                  onClick={toggleMenu}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className="md:hidden py-4 px-4 absolute w-full bg-[#112240]/95 backdrop-blur-md shadow-xl"
+            initial={{ opacity: 0, height: 0, y: -20 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col space-y-4">
+              {["Home", "Experience", "Projects", "Skills", "Contact"].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="border-b border-[#233554] pb-2"
                 >
-                  {item}
-                </Link>
-              </motion.div>
-            ))}
-            <div className="flex space-x-2 pt-2">
-              <motion.a 
-                href="https://github.com/nithinaakash" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-              >
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Github className="h-5 w-5" />
-                </Button>
-              </motion.a>
-              <motion.a 
-                href="mailto:snithinaakash@gmail.com"
-                whileHover={{ scale: 1.1 }}
-              >
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Mail className="h-5 w-5" />
-                </Button>
-              </motion.a>
+                  <Link 
+                    to={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                    className="hover:text-[#64ffda] text-gray-300 transition-colors flex items-center" 
+                    onClick={toggleMenu}
+                  >
+                    <span className="text-[#64ffda] mr-2 font-mono">0{index + 1}.</span>
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
+              <div className="flex space-x-4 pt-4">
+                <motion.a 
+                  href="https://github.com/nithinaakash" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10">
+                    <Github className="h-5 w-5" />
+                  </Button>
+                </motion.a>
+                <motion.a 
+                  href="mailto:snithinaakash@gmail.com"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Button variant="outline" size="icon" className="rounded-full border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10">
+                    <Mail className="h-5 w-5" />
+                  </Button>
+                </motion.a>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
