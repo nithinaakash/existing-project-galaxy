@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, GitHub, Mail, Phone, Linkedin } from "lucide-react";
+import { Menu, X, Github, Mail, Phone, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -27,7 +27,7 @@ const NavBar = () => {
           <Link to="#contact" className="hover:text-primary transition-colors">Contact</Link>
           <a href="https://github.com/nithinaakash" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="icon" className="rounded-full">
-              <GitHub className="h-5 w-5" />
+              <Github className="h-5 w-5" />
             </Button>
           </a>
           <a href="mailto:snithinaakash@gmail.com">
@@ -57,7 +57,7 @@ const NavBar = () => {
             <div className="flex space-x-2 pt-2">
               <a href="https://github.com/nithinaakash" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="icon" className="rounded-full">
-                  <GitHub className="h-5 w-5" />
+                  <Github className="h-5 w-5" />
                 </Button>
               </a>
               <a href="mailto:snithinaakash@gmail.com">

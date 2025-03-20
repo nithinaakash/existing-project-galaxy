@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { GitHub, Mail, MapPin, Phone, Linkedin } from "lucide-react";
+import { Github, Mail, MapPin, Phone, Linkedin } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <a href="https://github.com/nithinaakash" target="_blank" rel="noopener noreferrer">
                 <Button className="gap-2">
-                  <GitHub className="h-4 w-4" />
+                  <Github className="h-4 w-4" />
                   GitHub
                 </Button>
               </a>
