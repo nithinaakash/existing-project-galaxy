@@ -1,86 +1,31 @@
+import { useCallback } from "react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import type { Container, Engine } from "tsparticles-engine";
 
-import { useEffect, useMemo } from 'react';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import { MoveDirection, OutMode } from "@tsparticles/engine";
-
-const ParticleBackground = () => {
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
+function ParticleBackground() {
+  const particlesInit = useCallback(async (engine: Engine) => {
+    // Load the slim version of tsparticles
+    await loadSlim(engine);
   }, []);
 
-  const options = useMemo(() => ({
-    background: {
-      color: {
-        value: "transparent",
-      },
+  const particlesLoaded = useCallback(
+    async (container: Container | undefined) => {
+      console.log("Particles container loaded", container);
     },
-    fpsLimit: 120,
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: "push",
-        },
-        onHover: {
-          enable: true,
-          mode: "repulse",
-        },
-      },
-      modes: {
-        push: {
-          quantity: 4,
-        },
-        repulse: {
-          distance: 100,
-          duration: 0.4,
-        },
-      },
-    },
-    particles: {
-      color: {
-        value: ["#e844ff", "#8c52ff", "#5e17eb"]
-      },
-      links: {
-        color: "#8c52ff",
-        distance: 150,
-        enable: true,
-        opacity: 0.5,
-        width: 1,
-      },
-      move: {
-        direction: MoveDirection.none,
-        enable: true,
-        outModes: {
-          default: OutMode.bounce,
-        },
-        random: true,
-        speed: 1,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 40,
-      },
-      opacity: {
-        value: 0.5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 3 },
-      },
-    },
-    detectRetina: true,
-  }), []);
+    []
+  );
 
-  return <Particles id="tsparticles" options={options} />;
-};
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        // Your particle configuration here
+      }}
+    />
+  );
+}
 
 export default ParticleBackground;

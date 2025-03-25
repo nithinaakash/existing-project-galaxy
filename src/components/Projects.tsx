@@ -67,12 +67,12 @@ const Projects = () => {
                 </div>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Github className="h-4 w-4" />
-                    Code
-                  </Button>
-                </a>
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex justify-center">
+  <Button variant="outline" size="sm" className="gap-2">
+    <Github className="h-4 w-4" />
+    Code
+  </Button>
+</a>
               
               </CardFooter>
             </Card>
