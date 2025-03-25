@@ -1,8 +1,72 @@
+'use client';
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, Send, Github, Linkedin } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xvgkreey", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Your message has been successfully submitted.",
+          variant: "default"
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
@@ -81,18 +145,49 @@ const Contact = () => {
                 Fill out the form below and I'll get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
-            <CardContent className="pt-6 h-[500px] flex items-center justify-center">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSczgKvQrZA4vqnNdJILIDyJ8f1gOCRWCZ6WuiMg-42-fqSAgw/viewform?embedded=true" 
-                width="100%" 
-                height="500" 
-                frameBorder="0" 
-                marginHeight={0} 
-                marginWidth={0}
-                className="backdrop-blur-sm bg-[#0f0320]/40 rounded-lg"
+            <CardContent className="pt-6">
+              <form 
+                onSubmit={handleSubmit} 
+                className="space-y-4"
               >
-                Loading Google Form...
-              </iframe>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 bg-[#0f0320]/40 border border-[#412e6e] rounded-lg text-[#d5c0ff] placeholder-[#a78bff] focus:outline-none focus:ring-2 focus:ring-[#e844ff]"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 bg-[#0f0320]/40 border border-[#412e6e] rounded-lg text-[#d5c0ff] placeholder-[#a78bff] focus:outline-none focus:ring-2 focus:ring-[#e844ff]"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 bg-[#0f0320]/40 border border-[#412e6e] rounded-lg text-[#d5c0ff] placeholder-[#a78bff] min-h-[150px] focus:outline-none focus:ring-2 focus:ring-[#e844ff]"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full p-3 bg-gradient-to-r from-[#e844ff] to-[#8c52ff] text-white rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {isSubmitting ? "Sending..." : (
+                    <div className="flex items-center justify-center">
+                      <Send className="mr-2 h-5 w-5" /> Send Message
+                    </div>
+                  )}
+                </button>
+              </form>
             </CardContent>
           </Card>
         </div>

@@ -30,14 +30,7 @@ const Footer = () => {
             >
               <Linkedin className="h-5 w-5" />
             </motion.a>
-            <motion.a 
-              href="mailto:snithinaakash@gmail.com"
-              className="text-[#d5c0ff] hover:text-[#e844ff] transition-colors"
-              whileHover={{ y: -3, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Mail className="h-5 w-5" />
-            </motion.a>
+            
             <motion.a 
               href="tel:+13476564799"
               className="text-[#d5c0ff] hover:text-[#e844ff] transition-colors"
@@ -52,7 +45,6 @@ const Footer = () => {
             <p className="flex items-center justify-center">
               Made with <Heart className="h-4 w-4 mx-1 text-[#e844ff]" /> by Nithinaakash Sivaprakash
             </p>
-            <p className="mt-2">© {currentYear} All Rights Reserved</p>
           </div>
         </div>
       </div>

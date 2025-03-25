@@ -115,9 +115,7 @@ const NavBar = () => {
             whileHover={{ scale: 1.2, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 hover:text-white transition-all glow">
-              <Mail className="h-5 w-5" />
-            </Button>
+            
           </motion.a>
         </div>
 
@@ -184,9 +182,7 @@ const NavBar = () => {
                   href="mailto:snithinaakash@gmail.com"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <Button variant="outline" size="icon" className="rounded-full border-[#e844ff] text-[#e844ff] hover:bg-[#e844ff]/10 glow">
-                    <Mail className="h-5 w-5" />
-                  </Button>
+                  
                 </motion.a>
               </div>
             </div>
