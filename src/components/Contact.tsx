@@ -100,17 +100,7 @@ const Contact = () => {
                 </div>
               </a>
               
-              <a href="tel:+13476564799" className="flex items-center group hover:bg-[#1a0842]/40 p-3 rounded-lg transition-all">
-                <div className="bg-[#e844ff]/10 p-3 rounded-full mr-4 group-hover:bg-[#e844ff]/20 transition-colors">
-                  <Phone className="h-6 w-6 text-[#e844ff]" />
-                </div>
-                <div>
-                  <p className="text-sm text-[#a78bff]">Phone</p>
-                  <p className="font-medium text-[#d5c0ff] group-hover:text-[#e844ff] transition-colors">
-                    +1 347-656-4799
-                  </p>
-                </div>
-              </a>
+            
               
               <a href="https://github.com/nithinaakash" target="_blank" rel="noopener noreferrer" className="flex items-center group hover:bg-[#1a0842]/40 p-3 rounded-lg transition-all">
                 <div className="bg-[#e844ff]/10 p-3 rounded-full mr-4 group-hover:bg-[#e844ff]/20 transition-colors">

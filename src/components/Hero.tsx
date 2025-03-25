@@ -74,7 +74,7 @@ const Hero = () => {
                 snithinaakash@gmail.com
               </a>
             </motion.div>
-            <motion.div 
+            {/* <motion.div 
               className="flex items-center text-[#d5c0ff]"
               whileHover={{ scale: 1.05, color: "#e844ff" }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -83,7 +83,7 @@ const Hero = () => {
               <a href="tel:+13476564799" className="hover:text-[#e844ff] transition-colors">
                 +1 347-656-4799
               </a>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
           
           <motion.div 

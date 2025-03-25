@@ -31,14 +31,14 @@ const Footer = () => {
               <Linkedin className="h-5 w-5" />
             </motion.a>
             
-            <motion.a 
+            {/* <motion.a 
               href="tel:+13476564799"
               className="text-[#d5c0ff] hover:text-[#e844ff] transition-colors"
               whileHover={{ y: -3, scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
               <Phone className="h-5 w-5" />
-            </motion.a>
+            </motion.a> */}
           </div>
 
           <div className="text-center text-[#d5c0ff] text-sm">
