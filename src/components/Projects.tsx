@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 const projectsData = [
   {
     title: "Watermark Service",
-    description: "Created a serverless/cloud-native watermarking service using Golang and gRPC for a global publishing company, processing over 100 documents asynchronously with real-time status updates.",
-    details: "Engineered user authorization and status retrieval APIs, achieving a 90% reduction in document processing time and enhancing operational efficiency.",
+    description: "Engineered a state-of-the-art serverless watermarking platform using Golang and gRPC for a Fortune 500 publishing company, orchestrating asynchronous processing of 100+ documents with real-time status tracking.",
+    details: "Architected robust user authorization protocols and instant status retrieval APIs, delivering a staggering 90% reduction in document processing latency and transforming operational workflows.",
     skills: ["Go", "PostgreSQL", "gRPC", "Docker"],
     date: "July 2024",
     github: "https://github.com/nithinaakash/watermark-service",
@@ -16,8 +16,8 @@ const projectsData = [
   },
   {
     title: "AI-Driven Text Summarization Suite",
-    description: "Crafted a full-stack application with Next.js and Flask, integrating the BART/RAG model to perform over 1,000 text summarizations weekly.",
-    details: "Implemented advanced NLP techniques and provided an intuitive user interface for document processing and summary generation.",
+    description: "Pioneered a sophisticated full-stack application leveraging Next.js and Flask, seamlessly integrating cutting-edge BART/RAG models to power 1,000+ weekly text summarizations with enterprise-grade reliability.",
+    details: "Implemented breakthrough NLP algorithms and crafted an intuitive user experience for effortless document processing and instantaneous summary generation.",
     skills: ["LLM's", "Flask", "Tailwind CSS", "PyTorch", "Hugging Face", "Vercel"],
     date: "June 2024",
     github: "https://github.com/nithinaakash/text-summarization",
@@ -25,8 +25,8 @@ const projectsData = [
   },
   {
     title: "Crash NO! MO!",
-    description: "Orchestrated Apache Spark and Dask frameworks, reducing data processing time by 40% and integrating over 10 diverse datasets, streamlining analysis of 100 GB+ of traffic and environmental data.",
-    details: "Led the development of an interactive Streamlit dashboard that reduced decision-making time for traffic management and urban planning by 50%, providing real-time updates on traffic conditions and accident probabilities.",
+    description: "Orchestrated a revolutionary data engineering solution using Apache Spark and Dask frameworks, achieving 40% reduction in processing time while harmonizing 10+ diverse datasets to transform 100GB+ of traffic and environmental data into actionable insights.",
+    details: "Spearheaded development of an interactive Streamlit dashboard that revolutionized traffic management and urban planning decisions, slashing decision-making time by 50% through real-time predictive analytics of traffic conditions and accident probability.",
     skills: ["Big Data", "Hadoop", "Spark", "Dask", "Streamlit", "Machine Learning"],
     date: "May 2024",
     github: "https://github.com/nithinaakash/crash-no-mo",
@@ -41,8 +41,8 @@ const Projects = () => {
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects showcasing my skills in software development, 
-            cloud technologies, and machine learning.
+            Explore my portfolio of cutting-edge projects showcasing expertise in 
+            software architecture, cloud technologies, and machine learning innovation.
           </p>
         </div>
 

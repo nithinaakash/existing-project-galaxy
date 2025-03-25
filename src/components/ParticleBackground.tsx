@@ -2,7 +2,7 @@
 import { useEffect, useMemo } from 'react';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { MoveDirection } from "@tsparticles/engine";
+import { MoveDirection, OutMode } from "@tsparticles/engine";
 
 const ParticleBackground = () => {
   useEffect(() => {
@@ -54,7 +54,7 @@ const ParticleBackground = () => {
         direction: MoveDirection.none,
         enable: true,
         outModes: {
-          default: "bounce",
+          default: OutMode.bounce,
         },
         random: true,
         speed: 1,

@@ -8,9 +8,9 @@ const Education = () => {
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Education</h2>
+          <h2 className="text-3xl font-bold mb-4">Academic Excellence</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            My academic background in computer science provides a strong foundation for my professional work.
+            My rigorous academic foundation in advanced computer science principles powers my innovative approach to professional challenges.
           </p>
         </div>
 
@@ -31,8 +31,8 @@ const Education = () => {
                 <Badge className="mt-2 md:mt-0 w-fit">GPA 3.9</Badge>
               </div>
               <p className="text-sm text-muted-foreground">
-                Focusing on advanced computer science concepts, machine learning, and software engineering practices. 
-                Coursework includes artificial intelligence, distributed systems, and cloud computing.
+                Specializing in cutting-edge computational paradigms, advanced machine learning architectures, and enterprise software engineering methodologies. 
+                Coursework encompasses artificial intelligence algorithms, distributed system design, and next-generation cloud computing architectures.
               </p>
             </CardContent>
           </Card>
