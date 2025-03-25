@@ -48,6 +48,12 @@ const Footer = () => {
             </motion.a>
           </div>
 
+          <div className="text-center text-[#d5c0ff] text-sm">
+            <p className="flex items-center justify-center">
+              Made with <Heart className="h-4 w-4 mx-1 text-[#e844ff]" /> by Nithinaakash Sivaprakash
+            </p>
+            <p className="mt-2">© {currentYear} All Rights Reserved</p>
+          </div>
         </div>
       </div>
     </footer>

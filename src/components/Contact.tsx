@@ -28,21 +28,29 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out, I'll get back to you soon.",
-      });
-      
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-      
-      setIsSubmitting(false);
-    }, 1500);
+    // Set the recipient email
+    const recipientEmail = "snithinaakash@gmail.com";
+    
+    // Create mailto URL with form data
+    const mailtoUrl = `mailto:${recipientEmail}?subject=Portfolio Contact: ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    // Open email client
+    window.open(mailtoUrl, '_blank');
+    
+    // Show success toast
+    toast({
+      title: "Message ready to send!",
+      description: "Your email client has been opened with your message.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+    
+    setIsSubmitting(false);
   };
 
   return (

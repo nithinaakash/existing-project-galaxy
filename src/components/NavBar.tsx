@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Github, Mail, Phone, Linkedin } from "lucide-react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NavBar = () => {
@@ -25,6 +24,14 @@ const NavBar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavLinkClick = (id) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const navItemVariants = {
@@ -50,29 +57,46 @@ const NavBar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-[#e844ff] to-[#8c52ff] text-transparent bg-clip-text hover:from-[#e844ff] hover:to-[#5e17eb] transition-all duration-300">
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="text-xl font-bold bg-gradient-to-r from-[#e844ff] to-[#8c52ff] text-transparent bg-clip-text hover:from-[#e844ff] hover:to-[#5e17eb] transition-all duration-300"
+          >
             Nithinaakash Sivaprakash
-          </Link>
+          </a>
         </motion.div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center">
-          {["Home", "Experience", "Projects", "Skills", "Contact"].map((item, index) => (
+          {[
+            { name: "Home", id: "hero" },
+            { name: "Experience", id: "experience" },
+            { name: "Projects", id: "projects" },
+            { name: "Skills", id: "skills" },
+            { name: "Contact", id: "contact" }
+          ].map((item, index) => (
             <motion.div
-              key={item}
+              key={item.name}
               custom={index}
               variants={navItemVariants}
               initial="hidden"
               animate="visible"
             >
-              <Link 
-                to={item === "Home" ? "/" : `#${item.toLowerCase()}`} 
+              <a 
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavLinkClick(item.id);
+                }}
                 className="relative text-gray-300 hover:text-[#e844ff] transition-colors overflow-hidden group"
               >
                 <span className="text-[#e844ff] mr-1 font-mono">0{index + 1}.</span>
-                {item}
+                {item.name}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#e844ff] to-[#8c52ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-              </Link>
+              </a>
             </motion.div>
           ))}
           <motion.a 
@@ -118,22 +142,31 @@ const NavBar = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="flex flex-col space-y-4">
-              {["Home", "Experience", "Projects", "Skills", "Contact"].map((item, index) => (
+              {[
+                { name: "Home", id: "hero" },
+                { name: "Experience", id: "experience" },
+                { name: "Projects", id: "projects" },
+                { name: "Skills", id: "skills" },
+                { name: "Contact", id: "contact" }
+              ].map((item, index) => (
                 <motion.div
-                  key={item}
+                  key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className="border-b border-[#412e6e] pb-2"
                 >
-                  <Link 
-                    to={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                  <a 
+                    href={`#${item.id}`}
                     className="hover:text-[#e844ff] text-gray-300 transition-colors flex items-center" 
-                    onClick={toggleMenu}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavLinkClick(item.id);
+                    }}
                   >
                     <span className="text-[#e844ff] mr-2 font-mono">0{index + 1}.</span>
-                    {item}
-                  </Link>
+                    {item.name}
+                  </a>
                 </motion.div>
               ))}
               <div className="flex space-x-4 pt-4">
