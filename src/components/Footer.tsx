@@ -21,7 +21,7 @@ const Footer = () => {
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/nithinaakash" 
+              href="https://www.linkedin.com/in/nithinaakash-s-bab816169/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#d5c0ff] hover:text-[#e844ff] transition-colors"
@@ -47,20 +47,7 @@ const Footer = () => {
               <Phone className="h-5 w-5" />
             </motion.a>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-center"
-          >
-            <p className="text-sm text-[#d5c0ff] font-mono flex items-center justify-center">
-              Designed & Built with <Heart className="h-4 w-4 mx-1 text-[#e844ff]" /> by Nithinaakash Sivaprakash
-            </p>
-            <p className="text-xs text-[#d5c0ff] mt-2 font-mono">
-              © {currentYear} All Rights Reserved
-            </p>
-          </motion.div>
+
         </div>
       </div>
     </footer>

@@ -51,7 +51,7 @@ const NavBar = () => {
           whileTap={{ scale: 0.95 }}
         >
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-[#e844ff] to-[#8c52ff] text-transparent bg-clip-text hover:from-[#e844ff] hover:to-[#5e17eb] transition-all duration-300">
-            Nithinaakash S.
+            Nithinaakash Sivaprakash
           </Link>
         </motion.div>
 

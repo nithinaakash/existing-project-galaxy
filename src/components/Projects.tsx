@@ -73,12 +73,7 @@ const Projects = () => {
                     Code
                   </Button>
                 </a>
-                <a href={project.live} target="_blank" rel="noopener noreferrer">
-                  <Button size="sm" className="gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </Button>
-                </a>
+              
               </CardFooter>
             </Card>
           ))}
