@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
+
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,20 +26,67 @@ const Contact = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   try {
+  //     // Replace these with your EmailJS details
+  //     const result = await emailjs.send(
+  //       'YOUR_SERVICE_ID', 
+  //       'YOUR_TEMPLATE_ID', 
+  //       {
+  //         from_name: formData.name,
+  //         from_email: formData.email,
+  //         message: formData.message
+  //       },
+  //       'YOUR_PUBLIC_KEY'
+  //     );
+
+  //     toast({
+  //       title: "Message Sent!",
+  //       description: "Your message has been successfully sent.",
+  //       variant: "default"
+  //     });
+
+  //     // Reset form
+  //     setFormData({
+  //       name: "",
+  //       email: "",
+  //       message: "",
+  //     });
+  //   } catch (error) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Failed to send message. Please try again.",
+  //       variant: "destructive"
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate form
+    // if (!validateForm()) {
+    //   toast({
+    //     title: "Form Error",
+    //     description: "Please correct the errors in the form.",
+    //     variant: "destructive",
+    //   });
+    //   return;
+    // }
+
     setIsSubmitting(true);
     
-    // Set the recipient email
+    // Existing mailto logic
     const recipientEmail = "snithinaakash@gmail.com";
-    
-    // Create mailto URL with form data
     const mailtoUrl = `mailto:${recipientEmail}?subject=Portfolio Contact: ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
     
-    // Open email client
     window.open(mailtoUrl, '_blank');
     
-    // Show success toast
     toast({
       title: "Message ready to send!",
       description: "Your email client has been opened with your message.",
@@ -52,7 +101,6 @@ const Contact = () => {
     
     setIsSubmitting(false);
   };
-
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
@@ -130,44 +178,17 @@ const Contact = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    placeholder="Your Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Your Email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    placeholder="Your Message"
-                    className="min-h-32"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" /> Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
+              <iframe 
+                src="https://docs.google.com/forms/d/11OwQ0x1-UCrZllu6c9AUgDlmJ15BqSE0wF2yGE18l6Q/viewform?edit_requested=true" 
+                width="100%" 
+                height="600" 
+                frameBorder="0" 
+                marginHeight={0} 
+                marginWidth={0}
+              >
+                Loading…
+              </iframe>
+
             </CardContent>
           </Card>
         </div>
